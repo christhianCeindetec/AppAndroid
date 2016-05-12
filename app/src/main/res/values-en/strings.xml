@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Settings</string>
+    <string name="btnUsuario">User</string>
+    <string name="src_busqueda">Insert name or category...</string>
+    <string name="top_editor">Editor Pick</string>
+    <string name="top_puntuados">Top Rated</string>
+    <string name="top_visitados">Top Visited</string>
+    <string name="cerca_demi">Near...</string>
+    <string name="tab_ubicacion">Ubication</string>
+    <string name="tab_comentarios">Comments</string>
+    <string name="tab_menu">Menu</string>
+    <string name="app_name"><![CDATA[Food & Drink]]></string>
+</resources>

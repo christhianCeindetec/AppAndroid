@@ -1,0 +1,27 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Dimensiones de los tops -->
+    <!-- Dimensiones de los tops imagenes del top-->
+    <dimen name="appres_dim_icon_top">20dp</dimen>
+
+    <!-- Dimensiones de los tops imagenes del top-->
+    <dimen name="appres_dim_ancho_img_top">90dp</dimen>
+    <dimen name="appres_dim_alto_img_top">60dp</dimen>
+
+    <!-- Dimensiones de los tops botones del top-->
+    <dimen name="appres_dim_ancho_btn_top">90dp</dimen>
+    <dimen name="appres_dim_alto_btn_top">50dp</dimen>
+
+    <!-- Dimensiones de los tops logo del top-->
+    <dimen name="appres_dim_alto_logo_top">50dp</dimen>
+
+    <!-- Dimensiones de los tops paddings de los tops-->
+    <dimen name="appres_dim_padding_small">3dp</dimen>
+    <dimen name="appres_dim_padding_medium">5dp</dimen>
+    <dimen name="appres_dim_padding_large">10dp</dimen>
+
+
+</resources>

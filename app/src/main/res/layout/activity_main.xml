@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlyPrincipal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    tools:context=".Controller.ControllerActivityMain">
+
+
+    <RelativeLayout
+        android:id="@+id/rlyTopCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btnCategoriaRes"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_restaurante" />
+
+
+        <ImageButton
+            android:id="@+id/btnCategoriaBar"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/btnCategoriaRes"
+            android:clickable="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_bar" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyTopBusqueda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlyTopCategoria"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/srcPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:contentDescription="@android:string/search_go"
+            android:onClick="viewBusqueda"
+            android:src="@drawable/src_bar"
+            android:scaleType="centerCrop" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyTopSlide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlyTopBusqueda"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTopSlideSample"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#9ec790"
+            android:text="Soy un slide"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyTopContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlyTopSlide"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scvTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/llyTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rlyTopVisitadoTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:onClick="viewTopVisitado"
+                    android:orientation="vertical"
+                    android:padding="@dimen/appres_dim_padding_small">
+
+                    <TextView
+                        android:id="@+id/txtTopVisitado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:text="@string/top_visitados"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlyTopVisitado"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:padding="@dimen/appres_dim_padding_small">
+
+                    <ImageView
+                        android:id="@+id/imgTopVisitado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="false"
+                        android:maxHeight="@dimen/appres_dim_alto_img_top"
+                        android:maxWidth="@dimen/appres_dim_ancho_img_top"
+                        android:minHeight="@dimen/appres_dim_alto_img_top"
+                        android:minWidth="@dimen/appres_dim_ancho_img_top"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/icon_default_sucursal"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/txtTopVisitadoNombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/imgTopVisitado"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="Nombre Sucursal"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtTopVisitadoCategoria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_below="@+id/txtTopVisitadoNombre"
+                        android:layout_toRightOf="@+id/imgTopVisitado"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+
+                        android:text="Categoria"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/txtTopVisitadoDistancia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTopVisitadoCategoria"
+                        android:layout_toRightOf="@+id/imgTopVisitado"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="Distancia"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/txtTopVisitadoRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="4.0"
+                        android:textColor="#f9dfc7"
+                        android:textColorHighlight="#000000"
+                        android:textSize="50dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rlyTopPuntuadoTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:onClick="viewTopPuntuado"
+                    android:orientation="vertical"
+                    android:padding="@dimen/appres_dim_padding_small">
+
+                    <TextView
+                        android:id="@+id/txtTopPuntuado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:text="@string/top_puntuados"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlyTopPuntuado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:padding="@dimen/appres_dim_padding_small">
+
+                    <ImageView
+                        android:id="@+id/imgTopPuntuado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="false"
+                        android:maxHeight="@dimen/appres_dim_alto_img_top"
+                        android:maxWidth="@dimen/appres_dim_ancho_img_top"
+                        android:minHeight="@dimen/appres_dim_alto_img_top"
+                        android:minWidth="@dimen/appres_dim_ancho_img_top"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/icon_default_sucursal" />
+
+                    <TextView
+                        android:id="@+id/txtTopPuntuadoNombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/imgTopPuntuado"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="Nombre Sucrusal"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtTopPuntuadoCategoria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/txtTopPuntuadoNombre"
+                        android:layout_below="@+id/txtTopPuntuadoNombre"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="Medium Text"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/txtTopPuntuadoDistancia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTopPuntuadoCategoria"
+                        android:layout_toRightOf="@+id/imgTopPuntuado"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="Distancia"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/txtTopPuntuadoRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="4.0"
+                        android:textColor="#f9dfc7"
+                        android:textColorHighlight="#000000"
+                        android:textSize="50dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlyTopEditorTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:onClick="viewTopEditor"
+                    android:orientation="vertical"
+                    android:padding="@dimen/appres_dim_padding_small">
+
+                    <TextView
+                        android:id="@+id/txtTopEditor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:text="@string/top_editor"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlyTopEditor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:onClick="viewTopEditor"
+                    android:orientation="vertical"
+                    android:padding="@dimen/appres_dim_padding_small">
+
+                    <ImageView
+                        android:id="@+id/imgTopEditor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="false"
+                        android:maxHeight="@dimen/appres_dim_alto_img_top"
+                        android:maxWidth="@dimen/appres_dim_ancho_img_top"
+                        android:minHeight="@dimen/appres_dim_alto_img_top"
+                        android:minWidth="@dimen/appres_dim_ancho_img_top"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/icon_default_sucursal" />
+
+                    <TextView
+                        android:id="@+id/txtTopEditorNombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/imgTopEditor"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="Nombre Sucursal"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtTopEditorCategoria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/txtTopEditorNombre"
+                        android:layout_below="@+id/txtTopEditorNombre"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="Medium Text"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
+                    <TextView
+                        android:id="@+id/txtTopEditorDistancia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTopEditorCategoria"
+                        android:layout_toRightOf="@+id/imgTopEditor"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="Distancia"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/txtTopEditorRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:paddingLeft="@dimen/appres_dim_padding_large"
+                        android:text="4.0"
+                        android:textColor="#f9dfc7"
+                        android:textColorHighlight="#000000"
+                        android:textSize="50dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyTopLogo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_toEndOf="@+id/rlyTopCategoria"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/txtLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app_mesa_bar"
+            android:text="Soy un Logo"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:scaleType="center"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

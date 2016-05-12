@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btnUsuario">Usuario</string>
+    <string name="action_settings">Configuración</string>
+    <string name="src_busqueda">Ingresa nombre o categoria...</string>
+    <string name="top_editor">Recomendación del Editor</string>
+    <string name="top_visitados">Top Visitados</string>
+    <string name="top_puntuados">Top Puntuados</string>
+    <string name="cerca_demi">Cerca de mí...</string>
+    <string name="tab_ubicacion">Ubicación</string>
+    <string name="tab_comentarios">Comentarios</string>
+    <string name="tab_menu">Menú</string>
+    <string name="app_name"><![CDATA[Mesa & Bar]]></string>
+</resources>

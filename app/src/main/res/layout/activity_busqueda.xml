@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:screenOrientation="portrait"
+    tools:context=".Controller.ControllerActivityBusqueda">
+
+    <RelativeLayout
+        android:id="@+id/rlyBarraBusqueda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <SearchView
+            android:id="@+id/scvBusqueda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:queryHint="@string/src_busqueda" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyBarraCercaDeMi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlyBarraBusqueda"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtCercaDeMi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="@dimen/appres_dim_padding_large"
+            android:text="@string/cerca_demi"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyBusquedaCategoriaAleatoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlyBarraCercaDeMi"
+        android:orientation="vertical">
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/lvListaCategoriaAleatoria"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Controller.ControllerActivityBusqueda" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlyBusquedaConsulta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlyBarraCercaDeMi"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/lvListaBusquedaConsulta"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Controller.ControllerActivityBusqueda" />
+    </RelativeLayout>
+</RelativeLayout>
