@@ -18,6 +18,7 @@ composer.phar
 app/phpunit.xml  
  
 # -- Editores -----------------------------------------
+
 # vim
 .*.sw[a-z]
 *.un~
@@ -63,6 +64,16 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+
+#Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
  
 # -- Sistemas Operativos ------------------------------
 # Windows
