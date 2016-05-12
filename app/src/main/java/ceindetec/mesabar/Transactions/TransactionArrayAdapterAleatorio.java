@@ -114,14 +114,14 @@ public class TransactionArrayAdapterAleatorio extends ArrayAdapter {
                 public void onClick(View view) {
 
                     Intent intent = new Intent(getContext(), ControllerActivityResultadoCategoriaAleatoria.class);
-                    intent.putExtra("nombreCategoria", ((TextView)view).getText());
+                    intent.putExtra("nombreCategoria", ((TextView) view).getText());
                     intent.putExtra("idCategoria", view.getId());
                     view.getContext().startActivity(intent);
                 }
             });
 
         } catch (Exception error) {
-            Log.e(TAG,error.toString());
+            Log.e(TAG, error.toString());
         }
         return listItemView;
     }

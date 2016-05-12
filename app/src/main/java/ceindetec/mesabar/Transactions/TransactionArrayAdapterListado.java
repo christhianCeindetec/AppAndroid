@@ -31,7 +31,7 @@ import ceindetec.mesabar.R;
 public class TransactionArrayAdapterListado extends ArrayAdapter {
 
     private static String URL_BASE = GlobalVars.getGlobalVarsInstance().getUrlBase();
-    private static final String TAG= "TransactionArrayAdapter";
+    private static final String TAG = "TransactionArrayAdapter";
 
     ModelItemsInfoSucursal modelItemsInfoSucursal;
 
@@ -160,7 +160,7 @@ public class TransactionArrayAdapterListado extends ArrayAdapter {
                             Double.parseDouble(item.getLongitud())
                     )
             );
-            txtRating.setText(String.valueOf(FunctionAppRestaurante.truncateDecimal(Double.parseDouble(item.getPuntuacion()),1)));
+            txtRating.setText(String.valueOf(FunctionAppRestaurante.truncateDecimal(Double.parseDouble(item.getPuntuacion()), 1)));
             relativeLayout.setId(Integer.parseInt(item.getSucursal()));
 
             relativeLayout.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +172,7 @@ public class TransactionArrayAdapterListado extends ArrayAdapter {
                 }
             });
         } catch (Exception error) {
-            Log.e(TAG,error.toString());
+            Log.e(TAG, error.toString());
         }
         return listItemView;
     }
