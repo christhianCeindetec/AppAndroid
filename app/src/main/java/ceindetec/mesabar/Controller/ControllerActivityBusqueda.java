@@ -10,7 +10,7 @@ import android.widget.SearchView;
 
 import ceindetec.mesabar.R;
 import ceindetec.mesabar.Transactions.TransactionArrayAdapterAleatorio;
-import ceindetec.mesabar.Transactions.TransactionArrayAdapterListado;
+import ceindetec.mesabar.Transactions.TransactionArrayAdapterSucursales;
 
 import java.util.HashMap;
 
@@ -62,10 +62,11 @@ public class ControllerActivityBusqueda extends AppCompatActivity {
                     lvListaBusquedaConsulta = (ListView) findViewById(R.id.lvListaBusquedaConsulta);
 
                     //Crear adaptador
-                    adaptadorArregloBusquedaConsulta = new TransactionArrayAdapterListado(getBaseContext(), URL_JSON_BUSQUEDA_RESULTADO, parameters);
+                    adaptadorArregloBusquedaConsulta = new TransactionArrayAdapterSucursales(getBaseContext(), URL_JSON_BUSQUEDA_RESULTADO, parameters);
 
                     //Ingresa el adaptador en la instancia de la lista
                     lvListaBusquedaConsulta.setAdapter(adaptadorArregloBusquedaConsulta);
+
 
                     relativeLayout = (RelativeLayout) findViewById(R.id.rlyBarraCercaDeMi);
                     relativeLayout.setVisibility(View.INVISIBLE);

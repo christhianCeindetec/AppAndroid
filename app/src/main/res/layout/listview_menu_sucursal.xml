@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlyListViewMenu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:screenOrientation="portrait">
+
+    <TextView
+        android:id="@+id/txtNombreMenuSucursal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgAvatarComentario"
+        android:paddingLeft="@dimen/appres_dim_padding_large"
+        android:text="Titulo Menú"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtDescripcionMenuSucursal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtNombreMenuSucursal"
+        android:layout_below="@+id/txtNombreMenuSucursal"
+        android:paddingLeft="@dimen/appres_dim_padding_large"
+        android:text="Descripción Menú"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/txtNombreCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDescripcionMenuSucursal"
+        android:paddingLeft="@dimen/appres_dim_padding_large"
+        android:text="Categoria Menú"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+</RelativeLayout>

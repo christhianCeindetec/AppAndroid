@@ -6,7 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import ceindetec.mesabar.R;
-import ceindetec.mesabar.Transactions.TransactionArrayAdapterListado;
+import ceindetec.mesabar.Transactions.TransactionArrayAdapterSucursales;
 
 public class ControllerActivityTopPuntuado extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class ControllerActivityTopPuntuado extends AppCompatActivity {
         lvListaTop = (ListView) findViewById(R.id.lvListaTopPuntuado);
 
         //Crear adaptador
-        adaptadorArregloTop = new TransactionArrayAdapterListado(this, URL_JSON);
+        adaptadorArregloTop = new TransactionArrayAdapterSucursales(this, URL_JSON);
 
         //Ingresa el adaptador en la instancia de la lista
         lvListaTop.setAdapter(adaptadorArregloTop);
