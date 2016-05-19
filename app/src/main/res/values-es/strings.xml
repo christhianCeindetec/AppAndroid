@@ -11,4 +11,5 @@
     <string name="tab_comentarios">Comentarios</string>
     <string name="tab_menu">Menú</string>
     <string name="app_name"><![CDATA[Mesa & Bar]]></string>
+    <string name="btn_agregar_comentario">Agregar Comentario</string>
 </resources>

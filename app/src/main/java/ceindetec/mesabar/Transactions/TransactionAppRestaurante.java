@@ -35,7 +35,7 @@ public class TransactionAppRestaurante extends TextView {
 
     }
 
-    //Constructor de la clase TransactionArrayAdapterListado
+    //Constructor de la clase TransactionArrayAdapterSucursales
     public void getDataTransactionAppRestaurante(String txtUrl, final String idJson, final VolleyCallback callback) {
 
         // Añadir petición GSON a la cola
@@ -86,7 +86,7 @@ public class TransactionAppRestaurante extends TextView {
         );
     }
 
-    //Constructor de la clase TransactionArrayAdapterListado
+    //Constructor de la clase TransactionArrayAdapterSucursales
     public void getDataTransactionAppRestaurante(String txtUrl, final String idJson, HashMap<String, String> parameters, final VolleyCallback callback) {
 
         // Añadir petición GSON a la cola

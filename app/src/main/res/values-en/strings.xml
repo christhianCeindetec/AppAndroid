@@ -11,4 +11,5 @@
     <string name="tab_comentarios">Comments</string>
     <string name="tab_menu">Menu</string>
     <string name="app_name"><![CDATA[Food & Drink]]></string>
+    <string name="btn_agregar_comentario">Add Comment</string>
 </resources>

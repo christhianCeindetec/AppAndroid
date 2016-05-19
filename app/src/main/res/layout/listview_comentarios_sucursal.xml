@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlyListViewComentarios"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:screenOrientation="portrait">
+
+
+    <ImageView
+        android:id="@+id/imgAvatarComentario"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/txtTituloComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgAvatarComentario"
+        android:paddingLeft="@dimen/appres_dim_padding_large"
+        android:text="Titulo Comentario"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtTextoComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtTituloComentario"
+        android:layout_below="@+id/txtTituloComentario"
+        android:paddingLeft="@dimen/appres_dim_padding_large"
+        android:text="Texto Comentario"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/txtPuntuacionComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTextoComentario"
+        android:layout_toRightOf="@+id/imgAvatarComentario"
+        android:paddingLeft="@dimen/appres_dim_padding_large"
+        android:text="Puntuacion Comentario"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/txtFechaComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPuntuacionComentario"
+        android:layout_toRightOf="@+id/imgAvatarComentario"
+        android:paddingLeft="@dimen/appres_dim_padding_large"
+        android:text="Fecha Comentario"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

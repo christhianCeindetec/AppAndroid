@@ -1,16 +1,11 @@
 package ceindetec.mesabar.Transactions;
 
 import android.content.Context;
-import android.content.Intent;
-
 import android.util.Log;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -19,24 +14,22 @@ import com.android.volley.VolleyError;
 
 import java.util.HashMap;
 
-import ceindetec.mesabar.Controller.ControllerActivitySucursal;
-import ceindetec.mesabar.Core.FunctionAppRestaurante;
 import ceindetec.mesabar.Core.GlobalVars;
 import ceindetec.mesabar.Core.GsonRequest;
 import ceindetec.mesabar.Core.SingletonAppRestaurante;
-import ceindetec.mesabar.Models.ModelInfoSucursal;
-import ceindetec.mesabar.Models.ModelItemsInfoSucursal;
+import ceindetec.mesabar.Models.ModelInfoMenuSucursal;
+import ceindetec.mesabar.Models.ModelItemsInfoMenuSucursal;
 import ceindetec.mesabar.R;
 
-public class TransactionArrayAdapterListado extends ArrayAdapter {
+public class TransactionArrayAdapteMenuSucursal extends ArrayAdapter {
 
     private static String URL_BASE = GlobalVars.getGlobalVarsInstance().getUrlBase();
     private static final String TAG = "TransactionArrayAdapter";
 
-    ModelItemsInfoSucursal modelItemsInfoSucursal;
+    ModelItemsInfoMenuSucursal modelItemsInfoMenuSucursal;
 
-    //Constructor de la clase TransactionArrayAdapterListado
-    public TransactionArrayAdapterListado(Context context, String txtUrl) {
+    //Constructor de la clase TransactionArrayAdapterSucursales
+    public TransactionArrayAdapteMenuSucursal(Context context, String txtUrl) {
 
         super(context, 0);
 
@@ -53,16 +46,16 @@ public class TransactionArrayAdapterListado extends ArrayAdapter {
                         URL_BASE + txtUrl + ".php",
 
                         //@param Class<T> clazz Clase o modelo en el que se formatean los datos
-                        ModelItemsInfoSucursal.class,
+                        ModelItemsInfoMenuSucursal.class,
 
                         //@param headers
                         null,
 
                         //@param Listener
-                        new Response.Listener<ModelItemsInfoSucursal>() {
+                        new Response.Listener<ModelItemsInfoMenuSucursal>() {
                             @Override
-                            public void onResponse(ModelItemsInfoSucursal response) {
-                                modelItemsInfoSucursal = response;
+                            public void onResponse(ModelItemsInfoMenuSucursal response) {
+                                modelItemsInfoMenuSucursal = response;
                                 notifyDataSetChanged();
                             }
                         },
@@ -78,7 +71,7 @@ public class TransactionArrayAdapterListado extends ArrayAdapter {
     }
 
     //Constructor de la clase TransactionArrayAdapter
-    public TransactionArrayAdapterListado(Context context, String txtUrl, HashMap<String, String> params) {
+    public TransactionArrayAdapteMenuSucursal(Context context, String txtUrl, HashMap<String, String> params) {
 
         super(context, 0);
 
@@ -95,16 +88,16 @@ public class TransactionArrayAdapterListado extends ArrayAdapter {
                         URL_BASE + txtUrl + ".php",
 
                         //@param Class<T> clazz Clase o modelo en el que se formatean los datos
-                        ModelItemsInfoSucursal.class,
+                        ModelItemsInfoMenuSucursal.class,
 
                         //@param headers
                         params,
 
                         //@param Listener
-                        new Response.Listener<ModelItemsInfoSucursal>() {
+                        new Response.Listener<ModelItemsInfoMenuSucursal>() {
                             @Override
-                            public void onResponse(ModelItemsInfoSucursal response) {
-                                modelItemsInfoSucursal = response;
+                            public void onResponse(ModelItemsInfoMenuSucursal response) {
+                                modelItemsInfoMenuSucursal = response;
                                 notifyDataSetChanged();
                             }
                         },
@@ -121,7 +114,7 @@ public class TransactionArrayAdapterListado extends ArrayAdapter {
 
     @Override
     public int getCount() {
-        return modelItemsInfoSucursal != null ? modelItemsInfoSucursal.getInfoSucursal().size() : 0;
+        return modelItemsInfoMenuSucursal != null ? modelItemsInfoMenuSucursal.getInfoMenuSucursal().size() : 0;
     }
 
     @Override
@@ -136,41 +129,27 @@ public class TransactionArrayAdapterListado extends ArrayAdapter {
         if (null == convertView) {
             //Si no existe, entonces inflarlo
             listItemView = layoutInflater.inflate(
-                    R.layout.listview_info_sucursal,
+                    R.layout.listview_menu_sucursal,
                     parent,
                     false);
         } else listItemView = convertView;
 
 
         // Obtener el item actual
-        ModelInfoSucursal item = modelItemsInfoSucursal.getInfoSucursal().get(position);
+        ModelInfoMenuSucursal item = modelItemsInfoMenuSucursal.getInfoMenuSucursal().get(position);
 
         // Obtener Views
-        TextView txtNombre = (TextView) listItemView.findViewById(R.id.txtNombre);
-        TextView txtCategoria = (TextView) listItemView.findViewById(R.id.txtCategoria);
-        TextView txtDistancia = (TextView) listItemView.findViewById(R.id.txtDistancia);
-        TextView txtRating = (TextView) listItemView.findViewById(R.id.txtRating);
-        RelativeLayout relativeLayout = (RelativeLayout) listItemView.findViewById(R.id.rlyListView);
-        try {
-            // Actualizar los Views
-            txtNombre.setText(item.getNombre());
-            txtCategoria.setText(item.getCategoria());
-            txtDistancia.setText(FunctionAppRestaurante.Distancia(
-                            Double.parseDouble(item.getLatitud()),
-                            Double.parseDouble(item.getLongitud())
-                    )
-            );
-            txtRating.setText(String.valueOf(FunctionAppRestaurante.truncateDecimal(Double.parseDouble(item.getPuntuacion()), 1)));
-            relativeLayout.setId(Integer.parseInt(item.getSucursal()));
+        TextView txtNombreMenuSucursal = (TextView) listItemView.findViewById(R.id.txtNombreMenuSucursal);
+        TextView txtDescripcionMenuSucursal = (TextView) listItemView.findViewById(R.id.txtDescripcionMenuSucursal);
+        TextView txtNombreCategoria = (TextView) listItemView.findViewById(R.id.txtNombreCategoria);
 
-            relativeLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getContext(), ControllerActivitySucursal.class);
-                    intent.putExtra("idSucursal", view.getId());
-                    view.getContext().startActivity(intent);
-                }
-            });
+        try {
+
+            // Actualizar los Views
+            txtNombreMenuSucursal.setText(item.getNombreMenuSucursal());
+            txtDescripcionMenuSucursal.setText(item.getDescripcionMenuSucursal());
+            txtNombreCategoria.setText(item.getNombreCategoria1());
+
         } catch (Exception error) {
             Log.e(TAG, error.toString());
         }

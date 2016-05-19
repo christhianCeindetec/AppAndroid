@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import ceindetec.mesabar.R;
-import ceindetec.mesabar.Transactions.TransactionArrayAdapterListado;
+import ceindetec.mesabar.Transactions.TransactionArrayAdapterSucursales;
 
 import java.util.HashMap;
 
@@ -48,7 +48,7 @@ public class ControllerActivityResultadoCategoriaAleatoria extends AppCompatActi
                 lvListaResultado = (ListView) findViewById(R.id.lvListaResultadoCategoria);
 
                 //Crear adaptador
-                adaptadorArregloResultado = new TransactionArrayAdapterListado(this, URL_JSON_CATEGORIA_RESULTADO, parameters);
+                adaptadorArregloResultado = new TransactionArrayAdapterSucursales(this, URL_JSON_CATEGORIA_RESULTADO, parameters);
 
                 //Ingresa el adaptador en la instancia de la lista
                 lvListaResultado.setAdapter(adaptadorArregloResultado);

@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -24,15 +25,25 @@ import ceindetec.mesabar.Core.FunctionAppRestaurante;
 import ceindetec.mesabar.Core.GlobalVars;
 import ceindetec.mesabar.R;
 import ceindetec.mesabar.Transactions.TransactionAppRestaurante;
+import ceindetec.mesabar.Transactions.TransactionArrayAdapteMenuSucursal;
+import ceindetec.mesabar.Transactions.TransactionArrayAdapterComentariosSucursal;
+import ceindetec.mesabar.Transactions.TransactionArrayAdapterSucursales;
 
 public class ControllerActivitySucursal extends FragmentActivity implements OnMapReadyCallback {
 
     //Declaracion de los elementos que se utilizaran en la activity
     TextView txtTextView;
     LinearLayout linearLayout;
+    ListView lvListaComentariosSucursal;
+    ListView lvListaMenuSucursal;
+    ArrayAdapter adaptadorArregloComentariosSucursal;
+    ArrayAdapter adaptadorArregloMenuSucursal;
 
     //Declaracion de las transacciones que se utilizaran en la activity
     TransactionAppRestaurante transactionAppRestaurante;
+
+    String URL_JSON_COMENTARIOS = "getDataPuntuacionBySucursal";
+    String URL_JSON_MENU = "getDataMenuBySucursal";
 
     //Posicion geograficas de sucursales
     double latitudSucursal = -666;
@@ -63,21 +74,20 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
         if (bundle != null) {
             try {
 
+
+                //Obtener datos de la id de la sucursal enviado por parametro
                 Log.i(TAG_INFO_BUNDLE, bundle.get("idSucursal").toString());
 
-                HashMap<String, String> parameters = new HashMap<String, String>();
+                //Conversion de parametro a hashmap
+                final HashMap<String, String> parameters = new HashMap<String, String>();
                 parameters.put("idSucursal", bundle.get("idSucursal").toString());
 
+                //Creacion del encabezado
                 transactionAppRestaurante = new TransactionAppRestaurante(this);
                 transactionAppRestaurante.getDataTransactionAppRestaurante("getDataSucursalById", "infoSucursal", parameters, new TransactionAppRestaurante.VolleyCallback() {
                     @Override
                     public void onSuccess(JsonObject dataSucursal) {
                         try {
-
-                            //Llenado de componentes encabezado de la activity sucursal
-
-                            //relativeLayout = (RelativeLayout) findViewById(R.id.rlySucursal);
-                            //relativeLayout.setId(dataSucursal.get("sucursal").getAsInt());
 
                             txtTextView = (TextView) findViewById(R.id.txtNombreSucursal);
                             txtTextView.setText(dataSucursal.get("nombre").getAsString());
@@ -96,6 +106,25 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
 
                             txtTextView = (TextView) findViewById(R.id.txtRatingSucursal);
                             txtTextView.setText((String.valueOf(FunctionAppRestaurante.truncateDecimal(dataSucursal.get("puntuacion").getAsDouble(), 1))));
+
+                            //Obtener instancia de la lista
+                            lvListaComentariosSucursal = (ListView) findViewById(R.id.lvListaComentariosSucursal);
+
+                            //Crear adaptador
+                            adaptadorArregloComentariosSucursal = new TransactionArrayAdapterComentariosSucursal(getBaseContext(), URL_JSON_COMENTARIOS);
+
+                            //Ingresa el adaptador en la instancia de la lista
+                            lvListaComentariosSucursal.setAdapter(adaptadorArregloComentariosSucursal);
+
+
+                            //Obtener instancia de la lista
+                            lvListaMenuSucursal = (ListView) findViewById(R.id.lvListaMenuSucursal);
+
+                            //Crear adaptador
+                            adaptadorArregloMenuSucursal = new TransactionArrayAdapteMenuSucursal(getBaseContext(), URL_JSON_MENU);
+
+                            //Ingresa el adaptador en la instancia de la lista
+                            lvListaMenuSucursal.setAdapter(adaptadorArregloMenuSucursal);
 
                             //Llenado de datos de las pestañas de la activity
                             TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
