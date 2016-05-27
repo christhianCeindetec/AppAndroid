@@ -14,5 +14,13 @@
     <string name="tab_menu">Menú</string>
     <string name="title_activity_maps" translatable="false">Map</string>
     <string name="btn_agregar_comentario">Agregar Comentario</string>
+    <string name="agregar_favorito">¿Desea agregar este lugar a Favoritos?</string>
+    <string name="favorito">Favoritos</string>
+    <string name="opcion_si">Si</string>
+    <string name="opcion_no">No</string>
+    <string name="opcion_cancelar">Cancelar</string>
+    <string name="remover_favorito">¿Desea remover este lugar de favoritos?</string>
+    <string name="agregado_favorito">Favorito agregado correctamente</string>
+    <string name="removido_favorito">Favorito removido correctamente</string>
 
 </resources>

@@ -12,4 +12,12 @@
     <string name="tab_menu">Menu</string>
     <string name="app_name"><![CDATA[Food & Drink]]></string>
     <string name="btn_agregar_comentario">Add Comment</string>
+    <string name="agregar_favorito">Would you like to add this place to your favorites?</string>
+    <string name="favorito">Favorites</string>
+    <string name="opcion_si">Ok</string>
+    <string name="opcion_no">No</string>
+    <string name="opcion_cancelar">Cancel</string>
+    <string name="remover_favorito">Would you like to remove this place from your favorites?</string>
+    <string name="agregado_favorito">Favorite succesfully added</string>
+    <string name="removido_favorito">Favorite succesfully removed</string>
 </resources>
