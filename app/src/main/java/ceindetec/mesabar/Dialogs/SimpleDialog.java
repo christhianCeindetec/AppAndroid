@@ -8,23 +8,21 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
-import ceindetec.mesabar.R;
-
 /**
  * Fragmento con diálogo básico
  */
-public class DialogFavorito extends DialogFragment  {
+public class SimpleDialog extends DialogFragment {
 
-    public DialogFavorito() {
+    public SimpleDialog() {
     }
 
-    public interface onDialogFavoritoListener {
+    public interface OnSimpleDialogListener {
         void onPossitiveButtonClick();
         void onNegativeButtonClick();
     }
 
     // Interfaz de comunicación
-    DialogFavorito.onDialogFavoritoListener dialogFavoritoListener;
+    OnSimpleDialogListener listener;
 
     @NonNull
     @Override
@@ -38,39 +36,34 @@ public class DialogFavorito extends DialogFragment  {
      */
     public AlertDialog createSimpleDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        String accion = getArguments().getString("accion");
-        String mensaje="";
-        if(accion.equals("add"))
-            mensaje=getResources().getString(R.string.agregar_favorito);
-        else
-            mensaje=getResources().getString(R.string.remover_favorito);
 
-        builder.setTitle(R.string.favorito)
-                .setMessage(mensaje)
-                .setPositiveButton(R.string.opcion_si,
+        builder.setTitle("Titulo")
+                .setMessage("El Mensaje para el usuario")
+                .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dialogFavoritoListener.onPossitiveButtonClick();
+                                listener.onPossitiveButtonClick();
                             }
                         })
-                .setNegativeButton(R.string.opcion_cancelar,
+                .setNegativeButton("CANCELAR",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dialogFavoritoListener.onNegativeButtonClick();
+                                listener.onNegativeButtonClick();
                             }
                         });
 
         return builder.create();
     }
 
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
         try {
-            dialogFavoritoListener = (DialogFavorito.onDialogFavoritoListener) activity;
+            listener = (OnSimpleDialogListener) activity;
 
         } catch (ClassCastException e) {
             throw new ClassCastException(

@@ -11,6 +11,7 @@ import android.view.View;
 import android.support.v4.app.FragmentActivity;
 
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -31,6 +32,7 @@ import java.util.HashMap;
 import ceindetec.mesabar.Core.FunctionAppRestaurante;
 import ceindetec.mesabar.Core.GlobalVars;
 
+import ceindetec.mesabar.Dialogs.DialogComentario;
 import ceindetec.mesabar.Dialogs.DialogFavorito;
 
 import ceindetec.mesabar.R;
@@ -40,7 +42,7 @@ import ceindetec.mesabar.Transactions.TransactionArrayAdapteMenuSucursal;
 import ceindetec.mesabar.Transactions.TransactionArrayAdapterComentariosSucursal;
 
 public class ControllerActivitySucursal extends FragmentActivity implements OnMapReadyCallback,
-        DialogFavorito.OnSimpleDialogListener {
+        DialogFavorito.onDialogFavoritoListener {
 
     //Declaracion de los elementos que se utilizaran en la activity
     TextView txtTextView;
@@ -50,6 +52,7 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
     ImageView imgFavoritoSucursal;
     ArrayAdapter adaptadorArregloComentariosSucursal;
     ArrayAdapter adaptadorArregloMenuSucursal;
+    Button btnAgregarComentario;
 
     //Declaracion de las transacciones que se utilizaran en la activity
     TransactionAppRestaurante transactionAppRestaurante;
@@ -80,8 +83,9 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
     String URL_JSON_FAVORITO_GESTION = "gestionFavoritoSucursalByUsuario";
     String JSON_ID_KEY_FAVORITO = "infoFavorito";
 
-    //Argumentos pasados al dialog fragment
+    //Argumentos pasados al dialogFragment
     Bundle argsDialogFavorito = new Bundle();
+    Bundle argsDialogComentario = new Bundle();
     boolean estadoFavorito; //true:activo false:inactivo
 
     String ID_SUCURSAL;
@@ -123,6 +127,8 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
                     public void onSuccess(JsonObject dataSucursal) {
                         try {
 
+                            // ENCABEZADO DE LA ACTIVITY *******************************************
+
                             // NOMBRE DE LA SUCURSAL ***********************************************
 
                             //Agregando el valor del nombre de la sucursal
@@ -152,7 +158,21 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
                             txtTextView = (TextView) findViewById(R.id.txtRatingSucursal);
                             txtTextView.setText((String.valueOf(FunctionAppRestaurante.truncateDecimal(dataSucursal.get("puntuacion").getAsDouble(), 1))));
 
-                            // COMENTARIOS *********************************************************
+                            // PESTAÑAS DE LA ACTIVITY *********************************************
+
+                            //Llenado de datos de las pestañas de la activity
+                            TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
+                            tabHost.setup();
+
+                            // PESTAÑA COMENTARIOS *************************************************
+
+                            btnAgregarComentario = (Button) findViewById(R.id.btnAgregarComentario);
+                            btnAgregarComentario.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    addComentario(view);
+                                }
+                            });
 
                             //Obtener instancia de la lista lvListaComentariosSucursal
                             lvListaComentariosSucursal = (ListView) findViewById(R.id.lvListaComentariosSucursal);
@@ -163,7 +183,13 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
                             //Ingresa el adaptador en la instancia de la lista lvListaComentariosSucursal
                             lvListaComentariosSucursal.setAdapter(adaptadorArregloComentariosSucursal);
 
-                            // MENU ****************************************************************
+                            //Tab 1: Tab que muestra la lista de comentarios
+                            TabHost.TabSpec tabSpec = tabHost.newTabSpec(getResources().getString(R.string.tab_comentarios));
+                            tabSpec.setContent(R.id.tabComentarios);
+                            tabSpec.setIndicator(getResources().getString(R.string.tab_comentarios));
+                            tabHost.addTab(tabSpec);
+
+                            // PESTAÑA MENU ********************************************************
 
                             //Obtener instancia de la lista lvListaMenuSucursal
                             lvListaMenuSucursal = (ListView) findViewById(R.id.lvListaMenuSucursal);
@@ -174,27 +200,18 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
                             //Ingresa el adaptador en la instancia de la lista lvListaMenuSucursal
                             lvListaMenuSucursal.setAdapter(adaptadorArregloMenuSucursal);
 
-                            //Llenado de datos de las pestañas de la activity
-                            TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
-                            tabHost.setup();
-
-                            //Tab 1: Tab que muestra la lista de comentarios
-                            TabHost.TabSpec tabSpec = tabHost.newTabSpec(getResources().getString(R.string.tab_comentarios));
-                            tabSpec.setContent(R.id.tabComentarios);
-                            tabSpec.setIndicator(getResources().getString(R.string.tab_comentarios));
-                            tabHost.addTab(tabSpec);
-
                             //Tab 2: Tab que muestra la lista de menus
                             tabSpec = tabHost.newTabSpec(getResources().getString(R.string.tab_menu));
                             tabSpec.setContent(R.id.tabMenu);
                             tabSpec.setIndicator(getResources().getString(R.string.tab_menu));
                             tabHost.addTab(tabSpec);
 
+                            // PESTAÑA MAPA ********************************************************
+
                             //Paso de parametros de ubicacion de la sucursal al map
                             latitudSucursal = dataSucursal.get("latitud").getAsDouble(); // paso de la latitud
                             longitudSucursal = dataSucursal.get("longitud").getAsDouble(); // paso de la longitud
                             nombreSucursal = dataSucursal.get("nombre").getAsString(); // paso del nombre de la sucursal
-
 
                             //Obteniendo una instacia de la capa linear contenida en la pestaña tabUbicacion
                             linearLayout = (LinearLayout) findViewById(R.id.tabUbicacion);
@@ -270,6 +287,18 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
         }
     }
 
+    public void addComentario(View view) {
+
+        argsDialogComentario.putString("idSucursal", ID_SUCURSAL);
+        argsDialogComentario.putString("idUsuario", ID_USUARIO);
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        DialogComentario dialogComentario = new DialogComentario();
+        dialogComentario.setArguments(argsDialogComentario);
+        dialogComentario.show(fragmentTransaction, "DialogComentario");
+
+    }
+
     @Override
     public void onPossitiveButtonClick() {
 
@@ -285,50 +314,67 @@ public class ControllerActivitySucursal extends FragmentActivity implements OnMa
             @Override
             public void onSuccess(JsonObject dataFavorito) {
                 try {
-                    Log.wtf("codigo: ", dataFavorito.get("codigo").getAsString());
-                    Log.wtf("mensaje: ", dataFavorito.get("mensaje").getAsString());
                     Bitmap bitmap;
                     String mensajeToast;
                     switch (dataFavorito.get("codigo").getAsString()) {
+
                         case "ERROR_SELECT":
+
+                            Toast.makeText(getBaseContext(), dataFavorito.get("mensaje").getAsString(), Toast.LENGTH_LONG).show();
+
                             break;
+
                         case "ERROR_INSERT":
                         case "ERROR_UPDATE":
+
+                            Toast.makeText(getBaseContext(), dataFavorito.get("mensaje").getAsString(), Toast.LENGTH_LONG).show();
+
                             break;
+
                         case "NO_INSERT":
                         case "NO_UPDATE":
+
+                            Toast.makeText(getBaseContext(), dataFavorito.get("mensaje").getAsString(), Toast.LENGTH_LONG).show();
+
                             break;
+
                         case "OK_INSERT":
+
                             estadoFavorito = true;
                             bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.icon_del_favorite);
                             imgFavoritoSucursal.setImageBitmap(bitmap);
-                            Toast.makeText(getBaseContext(), dataFavorito.get("mensaje").getAsString(), Toast.LENGTH_LONG)
-                                    .show();
+                            Toast.makeText(getBaseContext(), dataFavorito.get("mensaje").getAsString(), Toast.LENGTH_LONG).show();
+
                             break;
+
                         case "OK_UPDATE":
+
                             if (dataFavorito.get("estado").getAsInt() == 1) {
+
                                 estadoFavorito = true;
-                                mensajeToast=getResources().getString(R.string.agregado_favorito);
+                                mensajeToast = getResources().getString(R.string.agregado_favorito);
                                 bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.icon_del_favorite);
                                 imgFavoritoSucursal.setImageBitmap(bitmap);
-                                Toast.makeText(getBaseContext(), mensajeToast, Toast.LENGTH_LONG)
-                                        .show();
+                                Toast.makeText(getBaseContext(), mensajeToast, Toast.LENGTH_LONG).show();
+
                             } else {
+
                                 estadoFavorito = false;
-                                mensajeToast=getResources().getString(R.string.removido_favorito);
+                                mensajeToast = getResources().getString(R.string.removido_favorito);
                                 bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.icon_add_favorite);
                                 imgFavoritoSucursal.setImageBitmap(bitmap);
-                                Toast.makeText(getBaseContext(), mensajeToast, Toast.LENGTH_LONG)
-                                        .show();
+                                Toast.makeText(getBaseContext(), mensajeToast, Toast.LENGTH_LONG).show();
+
                             }
+
                             break;
                     }
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
                     Log.e(TAG_ERROR_DATA, e.toString());
                 }
+
             }
         });
 

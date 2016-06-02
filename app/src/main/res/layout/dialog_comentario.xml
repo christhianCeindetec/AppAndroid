@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|center_horizontal"
+    android:padding="@dimen/appres_dim_cuerpo_dialog">
+
+    <TextView
+        android:id="@+id/txvTituloDialogComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_between"
+        android:paddingTop="@dimen/padding_between"
+        android:text="@string/comentario_titulo"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:id="@+id/divSupComentario"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@+id/txvTituloDialogComentario"
+        android:layout_alignParentStart="true"
+        android:background="#C8C9CB" />
+
+    <EditText
+        android:id="@+id/edtTituloComentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divSupComentario"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/normal_padding"
+        android:ems="10"
+        android:hint="@string/hint_comentario_titulo"
+        android:inputType="text"
+        android:padding="@dimen/edit_text_padding"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/edtTextoComentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtTituloComentario"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/padding_between"
+        android:layout_marginTop="@dimen/normal_padding"
+        android:ems="10"
+        android:hint="@string/hint_texto_comentario"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/edit_text_padding"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <RatingBar
+        android:id="@+id/rtbPuntajeComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtTextoComentario"
+        android:layout_toStartOf="@+id/btnCancelarComentario"
+        android:layout_toEndOf="@+id/btnAceptarComentario"
+        android:numStars="5"
+        android:rating="0"
+        android:scaleX=".5"
+        android:scaleY=".5"
+        android:stepSize="1"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:id="@+id/divInfComentario"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@+id/rtbPuntajeComentario"
+        android:layout_alignParentStart="true"
+        android:background="#C8C9CB" />
+
+    <Button
+        android:id="@+id/btnCancelarComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/divInfComentario"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="@dimen/button_padding"
+        android:paddingTop="@dimen/button_padding"
+        android:text="@string/opcion_cancelar"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnAceptarComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/divInfComentario"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="@dimen/button_padding"
+        android:paddingTop="@dimen/button_padding"
+        android:text="@string/opcion_agregar"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>

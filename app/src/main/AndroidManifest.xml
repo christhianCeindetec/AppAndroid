@@ -44,6 +44,9 @@
         <activity
             android:name=".Controller.ControllerActivityResultadoCategoriaAleatoria"
             android:label="@string/app_name" />
+        <activity
+            android:name=".Controller.ControllerActivityAddComentario"
+            android:label="@string/app_name" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
