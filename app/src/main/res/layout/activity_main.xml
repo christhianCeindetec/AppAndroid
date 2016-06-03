@@ -112,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:text="@string/top_visitados"
+                        android:text="@string/main.title.topVisitados"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -203,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:text="@string/top_puntuados"
+                        android:text="@string/main.title.topPuntuados"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -235,7 +235,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/imgTopPuntuado"
                         android:paddingLeft="@dimen/appres_dim_padding_large"
-                        android:text="Nombre Sucrusal"
+                        android:text="Nombre Sucursal"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textStyle="bold" />
 
@@ -289,7 +289,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:text="@string/top_editor"
+                        android:text="@string/main.title.topEditor"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textStyle="bold" />
                 </RelativeLayout>

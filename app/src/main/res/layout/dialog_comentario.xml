@@ -15,7 +15,7 @@
         android:gravity="center"
         android:paddingBottom="@dimen/padding_between"
         android:paddingTop="@dimen/padding_between"
-        android:text="@string/comentario_titulo"
+        android:text="@string/dialogComentario.title.comentario"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <View
@@ -34,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/normal_padding"
         android:ems="10"
-        android:hint="@string/hint_comentario_titulo"
+        android:hint="@string/dialogComentario.hint.tituloComentario"
         android:inputType="text"
         android:padding="@dimen/edit_text_padding"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -48,7 +48,7 @@
         android:layout_marginBottom="@dimen/padding_between"
         android:layout_marginTop="@dimen/normal_padding"
         android:ems="10"
-        android:hint="@string/hint_texto_comentario"
+        android:hint="@string/dialogComentario.hint.textoComentario"
         android:inputType="textMultiLine"
         android:padding="@dimen/edit_text_padding"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -86,7 +86,7 @@
         android:layout_centerHorizontal="true"
         android:paddingBottom="@dimen/button_padding"
         android:paddingTop="@dimen/button_padding"
-        android:text="@string/opcion_cancelar"
+        android:text="@string/general.button.opcionCancelar"
         android:textColor="@android:color/white" />
 
     <Button
@@ -100,7 +100,7 @@
         android:layout_centerHorizontal="true"
         android:paddingBottom="@dimen/button_padding"
         android:paddingTop="@dimen/button_padding"
-        android:text="@string/opcion_agregar"
+        android:text="@string/general.button.opcionAgregar"
         android:textColor="@android:color/white" />
 
 

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:queryHint="@string/src_busqueda" />
+            android:queryHint="@string/busqueda.queryHint.criterioBusqueda" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:paddingLeft="@dimen/appres_dim_padding_large"
-            android:text="@string/cerca_demi"
+            android:text="@string/busqueda.text.cercaDeMi"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </RelativeLayout>
 

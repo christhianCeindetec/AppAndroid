@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 
@@ -35,6 +34,15 @@ public class DialogComentario extends DialogFragment {
 
     public DialogComentario() {
     }
+
+    public interface onDialogComentarioListener {
+        void onAddComentario();
+        void onErrorAddComentario();
+        void onNegativeButtonClickComentario();
+    }
+
+    // Interfaz de comunicación
+    DialogComentario.onDialogComentarioListener dialogComentarioListener;
 
     @NonNull
     @Override
@@ -93,11 +101,7 @@ public class DialogComentario extends DialogFragment {
                             public void onSuccess(JsonObject dataSucursal) {
                                 try {
 
-                                    Log.wtf("usuario  Comentario", getArguments().getString("idUsuario"));
-                                    Log.wtf("sucursal  Comentario", getArguments().getString("idSucursal"));
-                                    Log.wtf("titulo Comentario", edtTituloComentario.getText().toString());
-                                    Log.wtf("texto  Comentario", edtTextoComentario.getText().toString());
-                                    Log.wtf("puntake  Comentario", String.valueOf(rtbPuntajeComentario.getRating()));
+                                    dialogComentarioListener.onAddComentario();
 
                                 } catch (Exception e) {
                                     e.printStackTrace();

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:padding="@dimen/appres_dim_padding_large"
-        android:text="@string/top_puntuados"
+        android:text="@string/main.title.topPuntuados"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"

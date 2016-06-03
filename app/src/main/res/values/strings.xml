@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AppRestaurante</string>
-    <string name="action_settings">Configuración</string>
-    <string name="btnUsuario">Usuario</string>
-    <string name="src_busqueda">Ingresa nombre o categoria...</string>
-    <string name="top_editor">Recomendación del Editor</string>
-    <string name="top_puntuados">Top Puntuados</string>
-    <string name="top_visitados">Top Visitados</string>
-    <string name="cerca_demi">Cerca de mí...</string>
-    <string name="tab_ubicacion">Ubicación</string>
-    <string name="tab_comentarios">Comentarios</string>
-    <string name="tab_menu">Menú</string>
-    <string name="title_activity_maps" translatable="false">Map</string>
-    <string name="btn_agregar_comentario">Agregar Comentario</string>
-    <string name="agregar_favorito">¿Desea agregar este lugar a Favoritos?</string>
-    <string name="favorito">Favoritos</string>
-    <string name="opcion_si">Si</string>
-    <string name="opcion_no">No</string>
-    <string name="opcion_cancelar">Cancelar</string>
-    <string name="remover_favorito">¿Desea remover este lugar de favoritos?</string>
-    <string name="agregado_favorito">Favorito agregado correctamente</string>
-    <string name="removido_favorito">Favorito removido correctamente</string>
 
     <!--Borrar a partir de aqui -->
 
@@ -57,8 +36,48 @@
         <item>Media</item>
         <item>Baja</item>
     </string-array>
-    <string name="comentario_titulo">Agregar Comentario</string>
-    <string name="hint_comentario_titulo">Titulo del Comentario</string>
-    <string name="hint_texto_comentario">Texto del Comentario</string>
-    <string name="opcion_agregar">Agregar</string>
+
+    <!-- Borrar hasta aqui -->
+
+
+    <!-- General ################################################################################-->
+    <string name="general.title.appName">AppRestaurante</string>
+    <string name="general.button.opcionSi">Si</string>
+    <string name="general.button.opcionNo">No</string>
+    <string name="general.button.opcionCancelar">Cancelar</string>
+    <string name="general.button.opcionAgregar">Agregar</string>
+
+    <!--Activity Main ###########################################################################-->
+    <string name="main.title.topVisitados">Top Visitados</string>
+    <string name="main.title.topPuntuados">Top Puntuados</string>
+    <string name="main.title.topEditor">Recomendación del Editor</string>
+    <string name="main.button.configuracion">Configuración</string>
+
+    <!--Activity Busqueda #######################################################################-->
+    <string name="busqueda.queryHint.criterioBusqueda">Ingresa nombre o categoria...</string>
+    <string name="busqueda.text.cercaDeMi">Cerca de mí...</string>
+
+    <!-- Activity Sucursal ######################################################################-->
+    <string name="sucursal.button.agregarComentario">Agregar Comentario</string>
+    <string name="sucursal.tab.tabUbicacion">Ubicación</string>
+    <string name="sucursal.tab.tabComentario">Comentarios</string>
+    <string name="sucursal.tab.tabMenu">Menú</string>
+    <!-- Mensajes favorito -->
+    <string name="sucursal.message.favoritoConfirmarAgregar">¿Desea agregar este lugar a Favoritos?</string>
+    <string name="sucursal.message.favoritoConfirmarRemover">¿Desea remover este lugar de favoritos?</string>
+    <string name="sucursal.message.favoritoAgregado">Favorito agregado correctamente</string>
+    <string name="sucursal.message.favoritoRemovido">Favorito removido correctamente</string>
+    <string name="sucursal.message.favoritoError">Ocurrio un error en la edición del favorito</string>
+    <!-- Mensajes comentarioo -->
+    <string name="sucursal.message.comentarioAgregado">Comentario agregado correctamente</string>
+    <string name="sucursal.message.comentarioError">Ocurrio un error en el registro del comentario</string>
+
+    <!-- Dialog Favorito ########################################################################-->
+    <string name="dialogFavorito.title.favorito">Favoritos</string>
+
+    <!-- Dialog Comenatario #####################################################################-->
+    <string name="dialogComentario.title.comentario">Agregar Comentario</string>
+    <string name="dialogComentario.hint.tituloComentario">Titulo del Comentario</string>
+    <string name="dialogComentario.hint.textoComentario">Texto del Comentario</string>
+
 </resources>
